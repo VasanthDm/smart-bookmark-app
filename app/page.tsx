@@ -1,20 +1,19 @@
 "use client"
 
+import { useEffect } from "react"
 import { supabase } from "@/lib/supabaseClient"
+import { json } from "stream/consumers"
 
 export default function Home() {
 
   const login = async () => {
-    alert(window.location.origin);
-    
-  await supabase.auth.signInWithOAuth({
-    provider: "google",
-    options: {
-      redirectTo: `${window.location.origin}`
-    },
-  })
-}
-
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+redirectTo: `${window.location.origin}/auth/callback`
+      },
+    })
+  }
 
   return (
     <div className="flex h-screen items-center justify-center">
